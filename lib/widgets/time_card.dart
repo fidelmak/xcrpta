@@ -14,6 +14,10 @@ class TimeCard extends StatefulWidget {
 }
 
 class _TimeCardState extends State<TimeCard> {
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

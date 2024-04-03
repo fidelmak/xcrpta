@@ -19,7 +19,7 @@ class _PriceListState extends State<PriceList> {
   Map<String, dynamic> cryptoPrices = {};
   Future<Map<String, dynamic>> fetchCryptoPrices() async {
     final response = await http.get(Uri.parse(
-        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'));
+        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,solana,tron,ethereum&vs_currencies=usd'));
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
@@ -62,7 +62,7 @@ class _PriceListState extends State<PriceList> {
           onTap: () {},
         ),
         WxListTile(
-          title: const Text('Bitcoin'),
+          title: const Text('Ethereum'),
           subtitle: const Text('price'),
           leading: Icon(CryptoFontIcons.fromSymbol("ETH")),
           trailing: Text(
@@ -75,11 +75,24 @@ class _PriceListState extends State<PriceList> {
           onTap: () {},
         ),
         WxListTile(
-          title: const Text('Bitcoin'),
+          title: const Text('Solana'),
           subtitle: const Text('price'),
-          leading: Icon(CryptoFontIcons.fromSymbol("BTC")),
+          leading: Icon(CryptoFontIcons.fromSymbol("SOL")),
           trailing: Text(
-            ' \$  ${cryptoPrices['solona']['usd']}',
+            ' \$  ${cryptoPrices['solana']['usd']}',
+            style: const TextStyle(fontSize: 30, color: Colors.amber),
+          ),
+          textColor: primaryColor,
+          iconColor: Colors.amber,
+          margin: const EdgeInsets.all(15),
+          onTap: () {},
+        ),
+        WxListTile(
+          title: const Text('Tron'),
+          subtitle: const Text('price'),
+          leading: Icon(CryptoFontIcons.fromSymbol("TRX")),
+          trailing: Text(
+            ' \$  ${cryptoPrices['tron']['usd']}',
             style: const TextStyle(fontSize: 30, color: Colors.amber),
           ),
           textColor: primaryColor,
