@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+
+import 'display.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -10,6 +13,6 @@ class Welcome extends StatefulWidget {
 class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return CryptoPriceWidget();
   }
 }
