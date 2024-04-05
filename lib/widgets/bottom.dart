@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:xcrpta/utils/colors.dart';
+import 'package:xcrpta/widgets/chart.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -34,10 +35,19 @@ class _BottomNavState extends State<BottomNav> {
                   color: primaryColor, // White color
                   // Add other properties as needed, e.g., size
                 ),
-                Icon(
-                  Icons.explore,
-                  color: Colors.grey, // White color
-                  // Add other properties as needed, e.g., size
+                IconButton(
+                  onPressed: () {
+                    print("tap");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Chart()),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.explore,
+                    color: Colors.grey, // White color
+                    // Add other properties as needed, e.g., size
+                  ),
                 ),
                 Icon(
                   Icons.message_outlined,
