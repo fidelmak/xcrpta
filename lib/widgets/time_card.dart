@@ -22,7 +22,7 @@ class _TimeCardState extends State<TimeCard> {
   Widget build(BuildContext context) {
     return Container(
       width: 200,
-      height: 200,
+      height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Colors.black,

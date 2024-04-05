@@ -7,16 +7,13 @@ import 'package:cryptofont/cryptofont.dart';
 import 'package:http/http.dart' as http;
 
 class PriceList extends StatefulWidget {
-  const PriceList({
-    super.key,
-  });
-
   @override
   State<PriceList> createState() => _PriceListState();
 }
 
 class _PriceListState extends State<PriceList> {
   Map<String, dynamic> cryptoPrices = {};
+
   Future<Map<String, dynamic>> fetchCryptoPrices() async {
     final response = await http.get(Uri.parse(
         'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,solana,tron,ethereum&vs_currencies=usd'));
@@ -28,20 +25,16 @@ class _PriceListState extends State<PriceList> {
     }
   }
 
+  @override
   void initState() {
     super.initState();
-    fetchPrices();
-  }
-
-  Future<void> fetchPrices() async {
-    try {
-      final Map<String, dynamic> prices = await fetchCryptoPrices();
+    fetchCryptoPrices().then((prices) {
       setState(() {
         cryptoPrices = prices;
       });
-    } catch (e) {
-      print('Error fetching prices: $e');
-    }
+    }).catchError((error) {
+      print('Error fetching prices: $error');
+    });
   }
 
   @override
@@ -53,7 +46,7 @@ class _PriceListState extends State<PriceList> {
           subtitle: const Text('price'),
           leading: Icon(CryptoFontIcons.fromSymbol("BTC")),
           trailing: Text(
-            ' \$  ${cryptoPrices['bitcoin']['usd']}',
+            ' \$  ${cryptoPrices.containsKey('bitcoin') ? cryptoPrices['bitcoin']['usd'] : 'Loading...'}',
             style: const TextStyle(fontSize: 30, color: Colors.amber),
           ),
           textColor: primaryColor,
@@ -66,7 +59,7 @@ class _PriceListState extends State<PriceList> {
           subtitle: const Text('price'),
           leading: Icon(CryptoFontIcons.fromSymbol("ETH")),
           trailing: Text(
-            ' \$  ${cryptoPrices['ethereum']['usd']}',
+            ' \$  ${cryptoPrices.containsKey('ethereum') ? cryptoPrices['ethereum']['usd'] : 'Loading...'}',
             style: const TextStyle(fontSize: 30, color: Colors.amber),
           ),
           textColor: primaryColor,
@@ -79,7 +72,7 @@ class _PriceListState extends State<PriceList> {
           subtitle: const Text('price'),
           leading: Icon(CryptoFontIcons.fromSymbol("SOL")),
           trailing: Text(
-            ' \$  ${cryptoPrices['solana']['usd']}',
+            ' \$  ${cryptoPrices.containsKey('solana') ? cryptoPrices['solana']['usd'] : 'Loading...'}',
             style: const TextStyle(fontSize: 30, color: Colors.amber),
           ),
           textColor: primaryColor,
@@ -92,7 +85,7 @@ class _PriceListState extends State<PriceList> {
           subtitle: const Text('price'),
           leading: Icon(CryptoFontIcons.fromSymbol("TRX")),
           trailing: Text(
-            ' \$  ${cryptoPrices['tron']['usd']}',
+            ' \$  ${cryptoPrices.containsKey('tron') ? cryptoPrices['tron']['usd'] : 'Loading...'}',
             style: const TextStyle(fontSize: 30, color: Colors.amber),
           ),
           textColor: primaryColor,

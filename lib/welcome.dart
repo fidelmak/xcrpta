@@ -35,7 +35,7 @@ class _WelcomeState extends State<Welcome> {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.all(25),
           child: ListView(
             children: [
               ProfileCard(width: width),
