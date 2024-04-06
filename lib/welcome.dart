@@ -38,28 +38,30 @@ class _WelcomeState extends State<Welcome> {
             style: TextStyle(fontSize: 12),
           ),
         ),
-        body: Container(
-          margin: EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              ProfileCard(width: width),
-              SizedBox(
-                height: 20,
-              ),
-              const TimeCard(),
-              const SizedBox(
-                height: 20,
-              ),
-              MyIcons(),
-              SizedBox(
-                height: 20,
-              ),
-              SingleChildScrollView(child: PriceList()),
-              SizedBox(
-                height: 30,
-              ),
-              BottomNav(),
-            ],
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.all(16),
+            child: ListView(
+              children: [
+                ProfileCard(width: width),
+                SizedBox(
+                  height: 20,
+                ),
+                const TimeCard(),
+                const SizedBox(
+                  height: 20,
+                ),
+                MyIcons(),
+                SizedBox(
+                  height: 20,
+                ),
+                SingleChildScrollView(child: PriceList()),
+                SizedBox(
+                  height: 30,
+                ),
+                BottomNav(),
+              ],
+            ),
           ),
         ));
   }
