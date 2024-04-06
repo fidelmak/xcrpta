@@ -18,6 +18,10 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width; // 80% of the screen width
@@ -35,7 +39,7 @@ class _WelcomeState extends State<Welcome> {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.all(25),
+          margin: EdgeInsets.all(16),
           child: ListView(
             children: [
               ProfileCard(width: width),

@@ -35,19 +35,10 @@ class _BottomNavState extends State<BottomNav> {
                   color: primaryColor, // White color
                   // Add other properties as needed, e.g., size
                 ),
-                IconButton(
-                  onPressed: () {
-                    print("tap");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Chart()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.explore,
-                    color: Colors.grey, // White color
-                    // Add other properties as needed, e.g., size
-                  ),
+                Icon(
+                  Icons.explore,
+                  color: Colors.grey, // White color
+                  // Add other properties as needed, e.g., size
                 ),
                 Icon(
                   Icons.message_outlined,

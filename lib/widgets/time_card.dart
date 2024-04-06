@@ -36,7 +36,7 @@ class _TimeCardState extends State<TimeCard> {
         child: Column(
           children: [
             Text(
-              "The Airdrop is Coming Soon ",
+              "The Launch Date is Near ",
               style: TextStyle(color: white),
             ),
             SizedBox(
